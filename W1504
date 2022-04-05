@@ -1,0 +1,102 @@
+import Scenes
+import Igis
+
+  /* 
+     This class is responsible for rendering the background.
+   */
+let x = 200
+
+class Background : RenderableEntity {
+
+      init() {
+          // Using a meaningful name can be helpful for debugging
+          super.init(name:"Background")
+      }
+      override func setup(canvasSize:Size, canvas:Canvas) {
+          let outerPath = Path(fillMode:.fillAndStroke)
+          outerPath.arc(center:Point(x:500, y:400), radius:100, startAngle:1.2*Double.pi, endAngle:1.8*Double.pi)
+          outerPath.arc(center:Point(x:500, y:283), radius:100, startAngle:0.2*Double.pi, endAngle:0.8*Double.pi)
+
+          let outerFillColor = FillStyle(color:Color(.white))
+          let outerLineWidth = LineWidth(width:2)
+          canvas.render(outerFillColor, outerLineWidth, outerPath)
+          let innerPath = Path(fillMode:.fillAndStroke)
+          innerPath.arc(center:Point(x:500, y:340), radius:15)
+          let innerFillColor = FillStyle(color:Color(.black))
+          let innerLineWidth = LineWidth(width:1)
+          canvas.render(innerFillColor, innerLineWidth, innerPath)
+
+          let pupil = Ellipse(center:Point(x:500, y:340), radiusX:4, radiusY:4, fillMode:.fill)
+          let pupilFillColor = FillStyle(color:Color(.black))
+          canvas.render(pupilFillColor, pupil)
+
+          let lashes1 = Path()
+          lashes1.moveTo(Point(x:415, y:325))
+          lashes1.lineTo(Point(x:400, y:305))
+          lashes1.moveTo(Point(x:440, y:310))
+          lashes1.lineTo(Point(x:425, y:290))
+          lashes1.moveTo(Point(x:465, y:300))
+          lashes1.lineTo(Point(x:455, y:280))
+          lashes1.moveTo(Point(x:490, y:295))
+          lashes1.lineTo(Point(x:480, y:275))
+          lashes1.moveTo(Point(x:510, y:295))
+          lashes1.lineTo(Point(x:505, y:273))
+          lashes1.moveTo(Point(x:530, y:300))
+          lashes1.lineTo(Point(x:540, y:280))
+          lashes1.moveTo(Point(x:550, y:305))
+          lashes1.lineTo(Point(x:570, y:285))
+          lashes1.moveTo(Point(x:575, y:320))
+          lashes1.lineTo(Point(x:595, y:300))
+          let lashesStrokeColor = StrokeStyle(color:Color(.black))
+          let lashesWidth = LineWidth(width:2)
+          canvas.render(lashesStrokeColor, lashesWidth, lashes1)
+
+          let outerPath1 = Path(fillMode:.fillAndStroke)
+          outerPath1.arc(center:Point(x:700, y:400), radius:100, startAngle:1.2*Double.pi, endAngle:1.8*Double.pi)
+          outerPath1.arc(center:Point(x:700, y:283), radius:100, startAngle:0.2*Double.pi, endAngle:0.8*Double.pi)
+
+          let outerFillColor1 = FillStyle(color:Color(.white))
+          let outerLineWidth1 = LineWidth(width:2)
+          canvas.render(outerFillColor1, outerLineWidth1, outerPath1)
+          let innerPath1 = Path(fillMode:.fillAndStroke)
+          innerPath1.arc(center:Point(x:500, y:340), radius:15)
+          let innerFillColor1 = FillStyle(color:Color(.black))
+          let innerLineWidth1 = LineWidth(width:1)
+          canvas.render(innerFillColor1, innerLineWidth1, innerPath1)
+
+          let pupil1 = Ellipse(center:Point(x:700, y:340), radiusX:16, radiusY:16, fillMode:.fill)
+          let pupilFillColor1 = FillStyle(color:Color(.black))
+          canvas.render(pupilFillColor1, pupil1)
+
+          let lashes2 = Path()
+
+          lashes2.moveTo(Point(x:415+x, y:325))
+          lashes2.lineTo(Point(x:400+x, y:305))
+          lashes2.moveTo(Point(x:440+x, y:310))
+          lashes2.lineTo(Point(x:425+x, y:290))
+          lashes2.moveTo(Point(x:465+x, y:300))
+          lashes2.lineTo(Point(x:455+x, y:280))
+          lashes2.moveTo(Point(x:490+x, y:295))
+          lashes2.lineTo(Point(x:495+x, y:275))
+          lashes2.moveTo(Point(x:510+x, y:295))
+          lashes2.lineTo(Point(x:515+x, y:273))
+          lashes2.moveTo(Point(x:530+x, y:300))
+          lashes2.lineTo(Point(x:540+x, y:280))
+          lashes2.moveTo(Point(x:550+x, y:305))
+          lashes2.lineTo(Point(x:570+x, y:285))
+          lashes2.moveTo(Point(x:575+x, y:320))
+          lashes2.lineTo(Point(x:595+x, y:300))
+          let lashesStrokeColor1 = StrokeStyle(color:Color(.black))
+          let lashesWidth1 = LineWidth(width:2)
+          canvas.render(lashesStrokeColor1, lashesWidth1, lashes2)
+
+
+
+
+
+      }
+
+
+
+
+}
