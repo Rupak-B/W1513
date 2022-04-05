@@ -1,0 +1,144 @@
+import Scenes
+import Igis
+  /* 
+     This class is responsible for rendering the background.
+   */
+
+class Background : RenderableEntity {
+   // let text : Text
+
+    var gridRectangles : [Rectangle] = [Rectangle]();
+    var text : Text
+    var text2 : Text
+    var text1 : Text
+    var text3 : Text
+    var count1 = 7
+    // func renderPyramid(to canvas:Canvas, rect Rect, columnCount:Int)
+    // for columnIndex in 0 ..< columncount {
+    // redernRow(to: canvas, rect: currentRect, columnCount: brickCount)
+    // let brickCount = columnCount - columnIndex
+    //curentRect.topLeft.y -= currentRect.size.hight
+    //curentRect.top.Left.x += currentRect.size.width/2
+    // make pyramid
+    func renderPyramid(rows:Int, x:Int, y:Int, width:Int, height:Int, canvas:Canvas) {
+        for pN in 0..<rows { // pyramid number
+            for x in 0..<rows-pN {
+                let rectBrick = Rect(topLeft:Point(x:x+((pN*width)/2+(x*width)), y:y-(pN*height)), size:Size(width:width, height:height))
+                canvas.render(Rectangle(rect:rectBrick, fillMode:.stroke))
+            }
+        }
+    }
+
+    init() {
+
+        func makeRow(){
+        }
+        func makeRect(x:Int, y:Int, width:Int, height:Int) -> Rectangle {
+            let rect = Rect(topLeft:Point(x:x, y:y), size:Size(width:width, height:height))
+            return Rectangle(rect:rect, fillMode:.stroke)
+        }
+
+        //Initialize objects
+
+
+        text = Text(location:Point(x:700, y:575), text:"Your name")
+        text1 = Text(location:Point(x:900, y:575), text:"Your name")
+        text2 = Text(location:Point(x:1100, y:575), text:"Your name")
+        text.font = "8pt Arial"
+        text1.font = "8pt Arial"
+        text2.font = "8pt Arial"
+
+        text3 = Text(location:Point(x:1300, y:525), text:"Your name")
+        text3.font = "8pt Arial"
+
+        //that lonely rectangle
+
+      //  for y in 0..<1 {
+           // for x in 0..<1 {
+
+                gridRectangles.append(makeRect(x:(50) + 1300, y:(50) + 500, width:50, height:50))
+
+         //   }
+       // }
+        // make brick wall
+        for x in 0..<5 {
+            for y in 0..<5 {
+                if y%2 == 1 {
+                    gridRectangles.append(makeRect(x:x * 50 + 100, y:y*25 + 100, width:50, height:25))
+                }
+                else{
+                    gridRectangles.append(makeRect(x:(x * 50) + 125, y:y*25 + 100, width:50, height:25))
+                }
+            }
+        }
+        /// make gridrectangles
+
+        for y in 0..<3 {
+            for x in 0..<3 {
+
+                gridRectangles.append(makeRect(x:(x * 50) + 100, y:(y*50) + 700, width:50, height:50))
+
+            }
+        }
+
+        //make skyscrapers
+        for y in 0..<1 {
+            for x in 0..<1{
+
+
+                gridRectangles.append(makeRect(x:(x * 50) + 1100, y:(y*50) + 550, width:50, height:350))
+                if y == 0 {
+
+
+                }
+            }
+
+
+        }
+
+        for y in 0..<1 {
+            for x in 0..<1{
+
+                gridRectangles.append(makeRect(x:(x * 50) + 900, y:(y*50) + 550, width:50, height:250))
+                if y == 0 {
+
+
+                }
+            }
+        }
+        for y in 0..<1  {
+            for x in 0..<1 {
+
+                gridRectangles.append(makeRect(x:(x * 50) + 700, y:(y*50) + 550, width:50, height:550))
+                if y == 0 {
+
+
+                }}
+
+        }
+        for y in 0..<1 {
+            for x in 0..<1{
+
+                gridRectangles.append(makeRect(x:(x * 50) + 1300, y:(y*50) + 550, width:50, height:150))
+                if y == 0 {
+
+
+                }
+            }
+        }
+
+        // Using a meaningful name can be helpful for debugging
+        super.init(name:"Background")
+    }
+
+    override func setup(canvasSize:Size, canvas:Canvas) {
+        for rec in gridRectangles {
+            canvas.render(rec, text, text1, text2,text3)
+        }
+        renderPyramid(rows: 7, x: 800, y: 600, width: 50, height: 30, canvas: canvas)
+    }
+    override func render(canvas: Canvas) {
+
+    }
+
+}
